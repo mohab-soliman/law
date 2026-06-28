@@ -1,656 +1,790 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>افتتاح مكتبة كلية الحقوق — جامعة القاهرة</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-<style>
-/* ─── DESIGN TOKENS ─────────────────────────────── */
-:root {
-  /* Surface scale — warm off-white to cool slate */
-  --bg-base:     #f4f6fa;   /* page background */
-  --bg-surface:  #ffffff;   /* card surface */
-  --bg-muted:    #eaecf3;   /* pill / muted bg */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>افتتاح مكتبة كلية الحقوق — جامعة القاهرة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ─── DESIGN TOKENS — Forest Green + Warm Copper ── */
+        :root {
+            /* Surface scale — warm cream to soft sand */
+            --bg-base: #f5f2eb;
+            /* page background – warm ivory */
+            --bg-surface: #ffffff;
+            /* card surface */
+            --bg-muted: #e8e3da;
+            /* pill / muted bg */
 
-  /* Brand — deep navy accent */
-  --navy:        #1b2a4a;   /* headings */
-  --navy-mid:    #2e4270;   /* sub-text */
-  --navy-soft:   #6678a0;   /* muted text */
+            /* Brand — deep forest green accent */
+            --green: #1a332a;
+            /* headings – deep forest */
+            --green-mid: #2d5a45;
+            /* sub-text */
+            --green-soft: #6b8a78;
+            /* muted text */
 
-  /* Gold accent — kept coherent */
-  --gold:        #c09840;
-  --gold-mid:    #d4ac52;
-  --gold-light:  #e8c87a;
-  --gold-bg:     rgba(192,152,64,.10);
-  --gold-border: rgba(192,152,64,.28);
+            /* Copper accent — warm & earthy */
+            --copper: #b8733a;
+            --copper-mid: #d4935a;
+            --copper-light: #e8b88a;
+            --copper-bg: rgba(184, 115, 58, .10);
+            --copper-border: rgba(184, 115, 58, .28);
 
-  /* Dividers & borders */
-  --border:      rgba(30,50,100,.10);
-  --shadow-card: 0 2px 16px rgba(30,50,100,.08), 0 1px 4px rgba(30,50,100,.05);
-  --shadow-btn:  0 4px 16px rgba(192,152,64,.30);
+            /* Dividers & borders */
+            --border: rgba(30, 60, 40, .10);
+            --shadow-card: 0 2px 16px rgba(30, 60, 40, .08), 0 1px 4px rgba(30, 60, 40, .05);
+            --shadow-btn: 0 4px 16px rgba(184, 115, 58, .30);
 
-  /* Countdown card */
-  --card-bg:     #ffffff;
-  --card-num:    #1b2a4a;
+            /* Countdown card */
+            --card-bg: #ffffff;
+            --card-num: #1a332a;
 
-  /* Timing */
-  --ease-out:    cubic-bezier(.22,.68,0,1.2);
-}
+            /* Timing */
+            --ease-out: cubic-bezier(.22, .68, 0, 1.2);
+        }
 
-/* ─── RESET & BASE ───────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        /* ─── RESET & BASE ───────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-html { font-size: 16px; }
+        html {
+            font-size: 16px;
+        }
 
-body {
-  font-family: 'Cairo', sans-serif;
-  background: var(--bg-base);
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-}
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-base);
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
 
-/* Subtle radial on bg */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 0;
-  background:
-    radial-gradient(ellipse 60% 40% at 15% 90%, rgba(192,152,64,.09) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 85% 10%, rgba(27,42,74,.07)  0%, transparent 70%);
-  pointer-events: none;
-}
+        /* Subtle radial on bg — warm copper/green glow */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 60% 40% at 15% 90%, rgba(184, 115, 58, .09) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 85% 10%, rgba(26, 51, 42, .07) 0%, transparent 70%);
+            pointer-events: none;
+        }
 
-/* Outer frame line */
-body::after {
-  content: '';
-  position: fixed; inset: 18px; z-index: 0;
-  border: 1px solid var(--gold-border);
-  border-radius: 8px;
-  pointer-events: none;
-}
+        /* Outer frame line — copper */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 18px;
+            z-index: 0;
+            border: 1px solid var(--copper-border);
+            border-radius: 8px;
+            pointer-events: none;
+        }
 
-/* ─── CONTAINER ──────────────────────────────────── */
-.container {
-  position: relative; z-index: 1;
-  width: 100%; max-width: 800px;
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-}
+        /* ─── CONTAINER ──────────────────────────────────── */
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 800px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
 
-/* ─── LOGO ───────────────────────────────────────── */
-.logo-wrap {
-  margin-bottom: 1.5rem;
-}
+        /* ─── LOGO ───────────────────────────────────────── */
+        .logo-wrap {
+            margin-bottom: 1.5rem;
+        }
 
-.logo-wrap img {
-  height: 120px; width: auto;
-  /* white logo → invert to navy for light bg */
-  filter: brightness(0) saturate(100%)
-          invert(14%) sepia(37%) saturate(700%) hue-rotate(195deg) brightness(90%);
-  drop-shadow: none;
-}
+        .logo-wrap img {
+            height: 120px;
+            width: auto;
+            /* white logo → invert to forest green for light bg */
+            filter: brightness(0) saturate(100%) invert(18%) sepia(28%) saturate(580%) hue-rotate(115deg) brightness(85%);
+            drop-shadow: none;
+        }
 
-/* ─── DIVIDER ────────────────────────────────────── */
-.divider {
-  display: flex; align-items: center; gap: 10px;
-  width: 100%; max-width: 420px;
-  margin-bottom: 1.25rem;
-}
+        /* ─── DIVIDER ────────────────────────────────────── */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 420px;
+            margin-bottom: 1.25rem;
+        }
 
-.divider-line {
-  flex: 1; height: 1px;
-  background: linear-gradient(to left, transparent, var(--gold-mid));
-}
-.divider-line.r { background: linear-gradient(to right, transparent, var(--gold-mid)); }
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to left, transparent, var(--copper-mid));
+        }
+        .divider-line.r {
+            background: linear-gradient(to right, transparent, var(--copper-mid));
+        }
 
-.divider-dot {
-  width: 6px; height: 6px;
-  background: var(--gold-mid);
-  border-radius: 1px;
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
+        .divider-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--copper-mid);
+            border-radius: 1px;
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
 
-/* ─── COPY ───────────────────────────────────────── */
-.kicker {
-  font-size: clamp(.85rem, 2vw, .95rem);
-  font-weight: 400;
-  color: var(--gold);
-  letter-spacing: .08em;
-  margin-bottom: .3rem;
-}
+        /* ─── COPY ───────────────────────────────────────── */
+        .kicker {
+            font-size: clamp(.85rem, 2vw, .95rem);
+            font-weight: 400;
+            color: var(--copper);
+            letter-spacing: .08em;
+            margin-bottom: .3rem;
+        }
 
-.title {
-  font-size: clamp(1.55rem, 5vw, 2.5rem);
-  font-weight: 900;
-  color: var(--navy);
-  line-height: 1.2;
-  margin-bottom: .2rem;
-}
+        .title {
+            font-size: clamp(1.55rem, 5vw, 2.5rem);
+            font-weight: 900;
+            color: var(--green);
+            line-height: 1.2;
+            margin-bottom: .2rem;
+        }
 
-.subtitle {
-  font-size: clamp(.82rem, 1.8vw, .95rem);
-  font-weight: 300;
-  color: var(--navy-soft);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
+        .subtitle {
+            font-size: clamp(.82rem, 1.8vw, .95rem);
+            font-weight: 300;
+            color: var(--green-soft);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
 
-/* ─── DATE PILL ──────────────────────────────────── */
-.date-pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold-bg);
-  border: 1px solid var(--gold-border);
-  border-radius: 100px;
-  padding: 7px 22px;
-  font-size: clamp(.76rem, 1.6vw, .88rem);
-  font-weight: 600;
-  color: var(--gold);
-  margin-bottom: 1.75rem;
-  cursor: default;
-}
+        /* ─── DATE PILL ──────────────────────────────────── */
+        .date-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--copper-bg);
+            border: 1px solid var(--copper-border);
+            border-radius: 100px;
+            padding: 7px 22px;
+            font-size: clamp(.76rem, 1.6vw, .88rem);
+            font-weight: 600;
+            color: var(--copper);
+            margin-bottom: 1.75rem;
+            cursor: default;
+        }
 
-/* ─── COUNTDOWN GRID ─────────────────────────────── */
-.countdown {
-  display: flex; align-items: flex-start;
-  gap: 10px;
-  justify-content: center;
-  direction: ltr;          /* days LEFT, seconds RIGHT */
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-}
+        /* ─── COUNTDOWN GRID ─────────────────────────────── */
+        .countdown {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            justify-content: center;
+            direction: ltr;
+            /* days LEFT, seconds RIGHT */
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
 
-.unit { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+        .unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 7px;
+        }
 
-.unit-card {
-  position: relative;
-  width: clamp(76px, 16.5vw, 130px);
-  height: clamp(76px, 16.5vw, 130px);
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-card);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-}
+        .unit-card {
+            position: relative;
+            width: clamp(76px, 16.5vw, 130px);
+            height: clamp(76px, 16.5vw, 130px);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-/* top gold accent line */
-.unit-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(to right, transparent, var(--gold-mid), transparent);
-}
+        /* top copper accent line */
+        .unit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--copper-mid), transparent);
+        }
 
-/* center separator line */
-.unit-card::after {
-  content: '';
-  position: absolute;
-  left: 12%; right: 12%;
-  top: 50%; height: 1px;
-  background: var(--bg-muted);
-}
+        /* center separator line */
+        .unit-card::after {
+            content: '';
+            position: absolute;
+            left: 12%;
+            right: 12%;
+            top: 50%;
+            height: 1px;
+            background: var(--bg-muted);
+        }
 
-.unit-num {
-  font-size: clamp(2rem, 6.5vw, 3.6rem);
-  font-weight: 700;
-  color: var(--card-num);
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -.02em;
-  position: relative; z-index: 1;
-  transition: transform .12s var(--ease-out);
-}
+        .unit-num {
+            font-size: clamp(2rem, 6.5vw, 3.6rem);
+            font-weight: 700;
+            color: var(--card-num);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -.02em;
+            position: relative;
+            z-index: 1;
+            transition: transform .12s var(--ease-out);
+        }
 
-.unit-num.tick { transform: scale(1.08); }
+        .unit-num.tick {
+            transform: scale(1.08);
+        }
 
-.unit-label {
-  font-size: clamp(.6rem, 1.4vw, .76rem);
-  font-weight: 600;
-  color: var(--navy-soft);
-  letter-spacing: .07em;
-}
+        .unit-label {
+            font-size: clamp(.6rem, 1.4vw, .76rem);
+            font-weight: 600;
+            color: var(--green-soft);
+            letter-spacing: .07em;
+        }
 
-/* separator dots */
-.sep {
-  display: flex; flex-direction: column; gap: 8px;
-  align-self: center; margin-top: -20px;
-}
-.sep span {
-  display: block;
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--gold-mid);
-  opacity: .55;
-}
+        /* separator dots — copper */
+        .sep {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-self: center;
+            margin-top: -20px;
+        }
+        .sep span {
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--copper-mid);
+            opacity: .55;
+        }
 
-/* ─── ADJUST BUTTONS ─────────────────────────────── */
-.adjust-row {
-  display: flex; align-items: center;
-  justify-content: center; gap: 10px;
-  margin-bottom: 1.1rem;
-  direction: rtl;
-}
+        /* ─── ADJUST BUTTONS ─────────────────────────────── */
+        .adjust-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1.1rem;
+            direction: rtl;
+        }
 
-.adj-btn {
-  display: inline-flex; align-items: center; gap: 5px;
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 6px 18px;
-  font-family: 'Cairo', sans-serif;
-  font-size: .78rem; font-weight: 600;
-  color: var(--navy-soft);
-  cursor: pointer;
-  transition: background .15s, color .15s, border-color .15s, transform .1s;
-  touch-action: manipulation;
-  min-height: 36px;
-}
+        .adj-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 6px 18px;
+            font-family: 'Cairo', sans-serif;
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--green-soft);
+            cursor: pointer;
+            transition: background .15s, color .15s, border-color .15s, transform .1s;
+            touch-action: manipulation;
+            min-height: 36px;
+        }
 
-.adj-btn:hover {
-  background: var(--gold-bg);
-  border-color: var(--gold-border);
-  color: var(--gold);
-}
-.adj-btn:active { transform: scale(.96); }
+        .adj-btn:hover {
+            background: var(--copper-bg);
+            border-color: var(--copper-border);
+            color: var(--copper);
+        }
+        .adj-btn:active {
+            transform: scale(.96);
+        }
 
-/* ─── LAUNCH BUTTON ──────────────────────────────── */
-.launch-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--navy);
-  border: none;
-  border-radius: 100px;
-  padding: 12px 32px;
-  font-family: 'Cairo', sans-serif;
-  font-size: .9rem; font-weight: 700;
-  color: #fff;
-  cursor: pointer;
-  transition: transform .15s, box-shadow .15s;
-  touch-action: manipulation;
-  box-shadow: 0 4px 20px rgba(27,42,74,.25);
-  min-height: 44px;
-  margin-bottom: 1.75rem;
-  direction: rtl;
-}
+        /* ─── LAUNCH BUTTON ──────────────────────────────── */
+        .launch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green);
+            border: none;
+            border-radius: 100px;
+            padding: 12px 32px;
+            font-family: 'Cairo', sans-serif;
+            font-size: .9rem;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            transition: transform .15s, box-shadow .15s;
+            touch-action: manipulation;
+            box-shadow: 0 4px 20px rgba(26, 51, 42, .25);
+            min-height: 44px;
+            margin-bottom: 1.75rem;
+            direction: rtl;
+        }
 
-.launch-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 28px rgba(27,42,74,.32);
-}
-.launch-btn:active { transform: scale(.97); }
+        .launch-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 28px rgba(26, 51, 42, .32);
+        }
+        .launch-btn:active {
+            transform: scale(.97);
+        }
 
-/* ─── FINISHED ───────────────────────────────────── */
-.finished-msg {
-  display: none;
-  font-size: clamp(1.2rem, 3.5vw, 1.9rem);
-  font-weight: 700;
-  color: var(--gold);
-  margin: .5rem 0 1.5rem;
-  animation: fadeGlow 1.8s ease-in-out infinite alternate;
-}
+        /* ─── FINISHED ───────────────────────────────────── */
+        .finished-msg {
+            display: none;
+            font-size: clamp(1.2rem, 3.5vw, 1.9rem);
+            font-weight: 700;
+            color: var(--copper);
+            margin: .5rem 0 1.5rem;
+            animation: fadeGlow 1.8s ease-in-out infinite alternate;
+        }
 
-@keyframes fadeGlow {
-  from { opacity: .8; }
-  to   { opacity: 1; }
-}
+        @keyframes fadeGlow {
+            from {
+                opacity: .8;
+            }
+            to {
+                opacity: 1;
+            }
+        }
 
-/* ─── FOOTER ─────────────────────────────────────── */
-.footer {
-  font-size: .7rem;
-  color: var(--navy-soft);
-  opacity: .5;
-  margin-top: 1.25rem;
-  font-weight: 300;
-  letter-spacing: .04em;
-}
+        /* ─── FOOTER ─────────────────────────────────────── */
+        .footer {
+            font-size: .7rem;
+            color: var(--green-soft);
+            opacity: .5;
+            margin-top: 1.25rem;
+            font-weight: 300;
+            letter-spacing: .04em;
+        }
 
-/* ─── DRAMA OVERLAY ──────────────────────────────── */
-#drama-overlay {
-  display: none;
-  position: fixed; inset: 0; z-index: 200;
-  background: var(--bg-base);
-  align-items: center; justify-content: center;
-  flex-direction: column; gap: 1.5rem;
-}
-#drama-overlay.active { display: flex; }
+        /* ─── DRAMA OVERLAY ──────────────────────────────── */
+        #drama-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: var(--bg-base);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        #drama-overlay.active {
+            display: flex;
+        }
 
-.drama-ring {
-  position: relative;
-  width: 240px; height: 240px;
-  display: flex; align-items: center; justify-content: center;
-}
+        .drama-ring {
+            position: relative;
+            width: 240px;
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.drama-ring svg {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  transform: rotate(-90deg);
-}
+        .drama-ring svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
 
-.ring-track { fill: none; stroke: var(--bg-muted); stroke-width: 6; }
+        .ring-track {
+            fill: none;
+            stroke: var(--bg-muted);
+            stroke-width: 6;
+        }
 
-.ring-fill {
-  fill: none; stroke: var(--gold-mid);
-  stroke-width: 6; stroke-linecap: round;
-  stroke-dasharray: 691.15;   /* 2π×110 */
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset .95s linear, stroke .25s;
-  filter: drop-shadow(0 0 6px rgba(212,172,82,.55));
-}
+        .ring-fill {
+            fill: none;
+            stroke: var(--copper-mid);
+            stroke-width: 6;
+            stroke-linecap: round;
+            stroke-dasharray: 691.15;
+            /* 2π×110 */
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset .95s linear, stroke .25s;
+            filter: drop-shadow(0 0 6px rgba(212, 147, 90, .55));
+        }
 
-.drama-num {
-  font-size: 8.5rem; font-weight: 900;
-  color: var(--navy);
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  position: relative; z-index: 1;
-  animation: numPop .32s var(--ease-out);
-}
+        .drama-num {
+            font-size: 8.5rem;
+            font-weight: 900;
+            color: var(--green);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            position: relative;
+            z-index: 1;
+            animation: numPop .32s var(--ease-out);
+        }
 
-@keyframes numPop {
-  from { transform: scale(.55); opacity: 0; }
-  to   { transform: scale(1);   opacity: 1; }
-}
+        @keyframes numPop {
+            from {
+                transform: scale(.55);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
 
-.drama-sub {
-  font-size: 1rem; font-weight: 400;
-  color: var(--navy-soft);
-  letter-spacing: .06em;
-}
+        .drama-sub {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--green-soft);
+            letter-spacing: .06em;
+        }
 
-/* particles */
-.particles { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 201; }
+        /* particles */
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 201;
+        }
 
-.particle {
-  position: absolute; border-radius: 50%; opacity: 0;
-  animation: floatUp .9s ease-out forwards;
-}
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatUp .9s ease-out forwards;
+        }
 
-@keyframes floatUp {
-  0%   { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(-110px) scale(.2); }
-}
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-110px) scale(.2);
+            }
+        }
 
-/* flash */
-#flash {
-  position: fixed; inset: 0; z-index: 300;
-  background: #fff; opacity: 0;
-  pointer-events: none; transition: opacity .08s;
-}
+        /* flash */
+        #flash {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            background: #fff;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .08s;
+        }
 
-/* ─── RESPONSIVE ─────────────────────────────────── */
-@media (max-width: 480px) {
-  body::after { inset: 10px; }
-  .container { padding: 1.8rem 1rem; }
-  .logo-wrap img { height: 90px; }
-  .unit-card { border-radius: 8px; }
-  .sep span { width: 4px; height: 4px; }
-  .drama-ring { width: 190px; height: 190px; }
-  .drama-num { font-size: 6.5rem; }
-}
+        /* ─── RESPONSIVE ─────────────────────────────────── */
+        @media (max-width: 480px) {
+            body::after {
+                inset: 10px;
+            }
+            .container {
+                padding: 1.8rem 1rem;
+            }
+            .logo-wrap img {
+                height: 90px;
+            }
+            .unit-card {
+                border-radius: 8px;
+            }
+            .sep span {
+                width: 4px;
+                height: 4px;
+            }
+            .drama-ring {
+                width: 190px;
+                height: 190px;
+            }
+            .drama-num {
+                font-size: 6.5rem;
+            }
+        }
 
-/* reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .unit-num, .drama-num { transition: none; animation: none; }
-  .finished-msg { animation: none; opacity: 1; }
-}
-</style>
+        /* reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .unit-num,
+            .drama-num {
+                transition: none;
+                animation: none;
+            }
+            .finished-msg {
+                animation: none;
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- flash -->
-<div id="flash"></div>
+    <!-- flash -->
+    <div id="flash"></div>
 
-<!-- drama overlay -->
-<div id="drama-overlay" role="status" aria-live="assertive">
-  <div class="particles" id="particles"></div>
-  <div class="drama-ring">
-    <svg viewBox="0 0 240 240">
-      <circle class="ring-track" cx="120" cy="120" r="110"/>
-      <circle class="ring-fill"  cx="120" cy="120" r="110" id="ring-fill"/>
-    </svg>
-    <span class="drama-num" id="drama-num">5</span>
-  </div>
-  <p class="drama-sub">جارٍ الانتقال إلى المكتبة…</p>
+    <!-- drama overlay -->
+    <div id="drama-overlay" role="status" aria-live="assertive">
+        <div class="particles" id="particles"></div>
+        <div class="drama-ring">
+            <svg viewBox="0 0 240 240">
+                <circle class="ring-track" cx="120" cy="120" r="110"/>
+                <circle class="ring-fill"  cx="120" cy="120" r="110" id="ring-fill"/>
+            </svg>
+            <span class="drama-num" id="drama-num">5</span>
+        </div>
+        <p class="drama-sub">جارٍ الانتقال إلى المكتبة…</p>
+    </div>
+
+    <!-- main -->
+    <main class="container">
+
+        <div class="logo-wrap">
+            <img src="https://i.ibb.co/4ZkDhdNq/cropped-output-onlinepngtools-2.png"
+            alt="شعار مكتبة كلية الحقوق — جامعة القاهرة"
+            width="200" height="120">
+        </div>
+
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-dot"></div>
+            <div class="divider-line r"></div>
+        </div>
+
+        <p class="kicker">يسرّنا أن نُعلن عن</p>
+        <h1 class="title">افتتاح مكتبة كلية الحقوق</h1>
+        <p class="subtitle">جامعة القاهرة — نحو بيئة بحثية أكاديمية متكاملة</p>
+
+        <div class="date-pill" aria-label="موعد الافتتاح">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8"  y1="2" x2="8"  y2="6"/>
+            <line x1="3"  y1="10" x2="21" y2="10"/>
+        </svg>
+        الاثنين ٢٩ يونيو ٢٠٢٦ — الساعة الرابعة عصراً
+    </div>
+
+    <div class="countdown" id="countdown"
+    role="timer" aria-live="polite" aria-label="الوقت المتبقي على الافتتاح">
+
+    <div class="unit">
+        <div class="unit-card"><span class="unit-num" id="cd-days">00</span></div>
+        <span class="unit-label">يوم</span>
+    </div>
+
+    <div class="sep" aria-hidden="true"><span></span><span></span></div>
+
+    <div class="unit">
+        <div class="unit-card"><span class="unit-num" id="cd-hours">00</span></div>
+        <span class="unit-label">ساعة</span>
+    </div>
+
+    <div class="sep" aria-hidden="true"><span></span><span></span></div>
+
+    <div class="unit">
+        <div class="unit-card"><span class="unit-num" id="cd-mins">00</span></div>
+        <span class="unit-label">دقيقة</span>
+    </div>
+
+    <div class="sep" aria-hidden="true"><span></span><span></span></div>
+
+    <div class="unit">
+        <div class="unit-card"><span class="unit-num" id="cd-secs">00</span></div>
+        <span class="unit-label">ثانية</span>
+    </div>
+
 </div>
 
-<!-- main -->
-<main class="container">
-
-  <div class="logo-wrap">
-    <img src="https://i.ibb.co/4ZkDhdNq/cropped-output-onlinepngtools-2.png"
-         alt="شعار مكتبة كلية الحقوق — جامعة القاهرة"
-         width="200" height="120">
-  </div>
-
-  <div class="divider">
-    <div class="divider-line"></div>
-    <div class="divider-dot"></div>
-    <div class="divider-line r"></div>
-  </div>
-
-  <p class="kicker">يسرّنا أن نُعلن عن</p>
-  <h1 class="title">افتتاح مكتبة كلية الحقوق</h1>
-  <p class="subtitle">جامعة القاهرة — نحو بيئة بحثية أكاديمية متكاملة</p>
-
-  <div class="date-pill" aria-label="موعد الافتتاح">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <rect x="3" y="4" width="18" height="18" rx="2"/>
-      <line x1="16" y1="2" x2="16" y2="6"/>
-      <line x1="8"  y1="2" x2="8"  y2="6"/>
-      <line x1="3"  y1="10" x2="21" y2="10"/>
-    </svg>
-    الاثنين ٢٩ يونيو ٢٠٢٦ — الساعة الرابعة عصراً
-  </div>
-
-  <div class="countdown" id="countdown"
-       role="timer" aria-live="polite" aria-label="الوقت المتبقي على الافتتاح">
-
-    <div class="unit">
-      <div class="unit-card"><span class="unit-num" id="cd-days">00</span></div>
-      <span class="unit-label">يوم</span>
-    </div>
-
-    <div class="sep" aria-hidden="true"><span></span><span></span></div>
-
-    <div class="unit">
-      <div class="unit-card"><span class="unit-num" id="cd-hours">00</span></div>
-      <span class="unit-label">ساعة</span>
-    </div>
-
-    <div class="sep" aria-hidden="true"><span></span><span></span></div>
-
-    <div class="unit">
-      <div class="unit-card"><span class="unit-num" id="cd-mins">00</span></div>
-      <span class="unit-label">دقيقة</span>
-    </div>
-
-    <div class="sep" aria-hidden="true"><span></span><span></span></div>
-
-    <div class="unit">
-      <div class="unit-card"><span class="unit-num" id="cd-secs">00</span></div>
-      <span class="unit-label">ثانية</span>
-    </div>
-
-  </div>
-
-  <div class="adjust-row">
+<div class="adjust-row">
     <button class="adj-btn" onclick="adjust(-5)" aria-label="تقليل ٥ ثواني">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12"/>
-      </svg>
-      ٥ ثواني
-    </button>
-    <button class="adj-btn" onclick="adjust(5)" aria-label="إضافة ٥ ثواني">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-        <line x1="12" y1="5" x2="12" y2="19"/>
-        <line x1="5"  y1="12" x2="19" y2="12"/>
-      </svg>
-      ٥ ثواني
-    </button>
-  </div>
-
-  <button class="launch-btn" onclick="startDrama()" aria-label="الانتقال الفوري إلى صفحة المكتبة">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         stroke-width="2" stroke-linecap="round" aria-hidden="true">
-      <polygon points="5 3 19 12 5 21 5 3"/>
     </svg>
-    الانتقال الفوري إلى المكتبة
-  </button>
+    ٥ ثواني
+</button>
+<button class="adj-btn" onclick="adjust(5)" aria-label="إضافة ٥ ثواني">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+    <line x1="12" y1="5" x2="12" y2="19"/>
+    <line x1="5"  y1="12" x2="19" y2="12"/>
+</svg>
+٥ ثواني
+</button>
+</div>
 
-  <p class="finished-msg" id="finished-msg" aria-live="assertive">
+<button class="launch-btn" onclick="startDrama()" aria-label="الانتقال الفوري إلى صفحة المكتبة">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <polygon points="5 3 19 12 5 21 5 3"/>
+</svg>
+الانتقال الفوري إلى المكتبة
+</button>
+
+<p class="finished-msg" id="finished-msg" aria-live="assertive">
     مرحباً بكم في مكتبة كلية الحقوق — جارٍ التحويل…
-  </p>
+</p>
 
-  <div class="divider">
+<div class="divider">
     <div class="divider-line"></div>
     <div class="divider-dot"></div>
     <div class="divider-line r"></div>
-  </div>
+</div>
 
-  <p class="footer">كلية الحقوق &nbsp;·&nbsp; جامعة القاهرة &nbsp;·&nbsp; مكتبة متكاملة للبحث العلمي</p>
+<p class="footer">كلية الحقوق &nbsp;·&nbsp; جامعة القاهرة &nbsp;·&nbsp; مكتبة متكاملة للبحث العلمي</p>
 
 </main>
 
 <script>
-/* ── CONFIG ──────────────────────────────── */
-const TARGET_DATE  = new Date(2026, 5, 29, 16, 0, 0, 0); // 29 Jun 2026 16:00
-const REDIRECT_URL = 'https://fll.law.cu.edu.eg/dashboard/queue_dashboard.php';
-const CIRCUMFERENCE = 2 * Math.PI * 110; // 691.15
+    /* ── CONFIG ──────────────────────────────── */
+    const TARGET_DATE = new Date(2026, 5, 29, 16, 0, 0, 0); // 29 Jun 2026 16:00
+    const REDIRECT_URL = 'https://fll.law.cu.edu.eg/dashboard/queue_dashboard.php';
+    const CIRCUMFERENCE = 2 * Math.PI * 110; // 691.15
 
-/* ── STATE ───────────────────────────────── */
-let offset      = 0;      // ms adjustment
-let mainDone    = false;
-let dramaActive = false;
+    /* ── STATE ───────────────────────────────── */
+    let offset = 0; // ms adjustment
+    let mainDone = false;
+    let dramaActive = false;
 
-/* ── ELEMENTS ────────────────────────────── */
-const elDays   = document.getElementById('cd-days');
-const elHours  = document.getElementById('cd-hours');
-const elMins   = document.getElementById('cd-mins');
-const elSecs   = document.getElementById('cd-secs');
-const elFinish = document.getElementById('finished-msg');
-const elCd     = document.getElementById('countdown');
-const elOverlay= document.getElementById('drama-overlay');
-const elDNum   = document.getElementById('drama-num');
-const elRing   = document.getElementById('ring-fill');
-const elFlash  = document.getElementById('flash');
-const elParts  = document.getElementById('particles');
+    /* ── ELEMENTS ────────────────────────────── */
+    const elDays = document.getElementById('cd-days');
+    const elHours = document.getElementById('cd-hours');
+    const elMins = document.getElementById('cd-mins');
+    const elSecs = document.getElementById('cd-secs');
+    const elFinish = document.getElementById('finished-msg');
+    const elCd = document.getElementById('countdown');
+    const elOverlay = document.getElementById('drama-overlay');
+    const elDNum = document.getElementById('drama-num');
+    const elRing = document.getElementById('ring-fill');
+    const elFlash = document.getElementById('flash');
+    const elParts = document.getElementById('particles');
 
-const pad = n => String(n).padStart(2, '0');
+    const pad = n => String(n).padStart(2, '0');
 
-/* ── MAIN TICK ───────────────────────────── */
-let prevSec = -1;
+    /* ── MAIN TICK ───────────────────────────── */
+    let prevSec = -1;
 
-function tick() {
-  const diff = TARGET_DATE - Date.now() + offset;
+    function tick() {
+        const diff = TARGET_DATE - Date.now() + offset;
 
-  if (diff <= 0) {
-    elDays.textContent = elHours.textContent =
-    elMins.textContent = elSecs.textContent = '00';
-    elFinish.style.display = 'block';
-    elCd.style.opacity = '0.35';
-    mainDone = true;
-    setTimeout(() => { window.location.href = REDIRECT_URL; }, 3000);
-    return;
-  }
+        if (diff <= 0) {
+            elDays.textContent = elHours.textContent =
+                elMins.textContent = elSecs.textContent = '00';
+            elFinish.style.display = 'block';
+            elCd.style.opacity = '0.35';
+            mainDone = true;
+            setTimeout(() => { window.location.href = REDIRECT_URL; }, 3000);
+            return;
+        }
 
-  const total = Math.floor(diff / 1000);
-  const d = Math.floor(total / 86400);
-  const h = Math.floor((total % 86400) / 3600);
-  const m = Math.floor((total % 3600) / 60);
-  const s = total % 60;
+        const total = Math.floor(diff / 1000);
+        const d = Math.floor(total / 86400);
+        const h = Math.floor((total % 86400) / 3600);
+        const m = Math.floor((total % 3600) / 60);
+        const s = total % 60;
 
-  elDays.textContent  = pad(d);
-  elHours.textContent = pad(h);
-  elMins.textContent  = pad(m);
-  elSecs.textContent  = pad(s);
+        elDays.textContent = pad(d);
+        elHours.textContent = pad(h);
+        elMins.textContent = pad(m);
+        elSecs.textContent = pad(s);
 
-  if (s !== prevSec) {
-    prevSec = s;
-    elSecs.classList.remove('tick');
-    void elSecs.offsetWidth;
-    elSecs.classList.add('tick');
-    setTimeout(() => elSecs.classList.remove('tick'), 120);
-  }
+        if (s !== prevSec) {
+            prevSec = s;
+            elSecs.classList.remove('tick');
+            void elSecs.offsetWidth;
+            elSecs.classList.add('tick');
+            setTimeout(() => elSecs.classList.remove('tick'), 120);
+        }
 
-  setTimeout(tick, 200);
-}
+        setTimeout(tick, 200);
+    }
 
-tick();
+    tick();
 
-/* ── ADJUST ──────────────────────────────── */
-function adjust(sec) {
-  if (mainDone) return;
-  offset += sec * 1000;
-}
+    /* ── ADJUST ──────────────────────────────── */
+    function adjust(sec) {
+        if (mainDone) return;
+        offset += sec * 1000;
+    }
 
-/* ── DRAMA ───────────────────────────────── */
-function startDrama() {
-  if (dramaActive) return;
-  dramaActive = true;
-  elOverlay.classList.add('active');
-  dramaStep(5);
-}
+    /* ── DRAMA ───────────────────────────────── */
+    function startDrama() {
+        if (dramaActive) return;
+        dramaActive = true;
+        elOverlay.classList.add('active');
+        dramaStep(5);
+    }
 
-const ringColors = ['','#c84a3a','#c8783a','#c8783a','#d4ac52','#d4ac52'];
+    const ringColors = ['', '#c84a3a', '#c8783a', '#c8783a', '#d4935a', '#d4935a'];
 
-function dramaStep(n) {
-  if (n === 0) {
-    spawnParticles(28);
-    elFlash.style.opacity = '1';
-    setTimeout(() => {
-      elFlash.style.opacity = '0';
-      window.location.href = REDIRECT_URL;
-    }, 380);
-    return;
-  }
+    function dramaStep(n) {
+        if (n === 0) {
+            spawnParticles(28);
+            elFlash.style.opacity = '1';
+            setTimeout(() => {
+                elFlash.style.opacity = '0';
+                window.location.href = REDIRECT_URL;
+            }, 380);
+            return;
+        }
 
-  /* number pop */
-  elDNum.style.animation = 'none';
-  void elDNum.offsetWidth;
-  elDNum.textContent = n;
-  elDNum.style.animation = 'numPop .32s cubic-bezier(.22,.68,0,1.2)';
+        /* number pop */
+        elDNum.style.animation = 'none';
+        void elDNum.offsetWidth;
+        elDNum.textContent = n;
+        elDNum.style.animation = 'numPop .32s cubic-bezier(.22,.68,0,1.2)';
 
-  /* ring drain */
-  elRing.style.transition = 'none';
-  elRing.style.strokeDashoffset = '0';
-  elRing.style.stroke = ringColors[n] || '#d4ac52';
-  void elRing.offsetWidth;
-  elRing.style.transition = 'stroke-dashoffset .95s linear, stroke .25s';
-  elRing.style.strokeDashoffset = CIRCUMFERENCE;
+        /* ring drain */
+        elRing.style.transition = 'none';
+        elRing.style.strokeDashoffset = '0';
+        elRing.style.stroke = ringColors[n] || '#d4935a';
+        void elRing.offsetWidth;
+        elRing.style.transition = 'stroke-dashoffset .95s linear, stroke .25s';
+        elRing.style.strokeDashoffset = CIRCUMFERENCE;
 
-  spawnParticles(5);
-  setTimeout(() => dramaStep(n - 1), 1000);
-}
+        spawnParticles(5);
+        setTimeout(() => dramaStep(n - 1), 1000);
+    }
 
-function spawnParticles(n) {
-  for (let i = 0; i < n; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.style.cssText = `
-      left:${Math.random()*100}vw;
-      top:${55+Math.random()*35}vh;
-      width:${3+Math.random()*5}px;
-      height:${3+Math.random()*5}px;
-      background:${Math.random()>.4?'#d4ac52':'#1b2a4a'};
-      animation-delay:${Math.random()*.35}s;
-      animation-duration:${.55+Math.random()*.5}s;
-    `;
-    elParts.appendChild(p);
-    setTimeout(() => p.remove(), 1200);
-  }
-}
+    function spawnParticles(n) {
+        for (let i = 0; i < n; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.cssText = `
+          left:${Math.random()*100}vw;
+          top:${55+Math.random()*35}vh;
+          width:${3+Math.random()*5}px;
+          height:${3+Math.random()*5}px;
+          background:${Math.random()>.4?'#d4935a':'#1a332a'};
+          animation-delay:${Math.random()*.35}s;
+          animation-duration:${.55+Math.random()*.5}s;
+        `;
+            elParts.appendChild(p);
+            setTimeout(() => p.remove(), 1200);
+        }
+    }
 </script>
 </body>
 </html>
