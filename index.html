@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>افتتاح مكتبة كلية الحقوق</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark:  #1a4a2e;
+    --green-mid:   #2d7a4f;
+    --green-light: #3fa066;
+    --gold:        #c9a84c;
+    --gold-light:  #e8c97a;
+    --white:       #ffffff;
+  }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--green-dark);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(45,122,79,0.35) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(201,168,76,0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  body::after {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 820px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  /* Logo */
+  .logos-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.6rem;
+  }
+
+  .logo-library img {
+    height: 130px;
+    width: auto;
+    filter: drop-shadow(0 4px 24px rgba(0,0,0,0.5));
+  }
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto 1.5rem;
+    max-width: 440px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+
+  .divider-line.right {
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+
+  .divider-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .headline {
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    font-weight: 400;
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.35rem;
+  }
+
+  .title {
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 0.25rem;
+  }
+
+  .subtitle {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 2rem;
+  }
+
+  /* Main countdown */
+  .countdown {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+    flex-wrap: wrap;
+    direction: ltr;
+  }
+
+  .unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .unit-box {
+    position: relative;
+    width: clamp(78px, 17vw, 136px);
+    height: clamp(78px, 17vw, 136px);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .unit-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .unit-number {
+    font-size: clamp(2.1rem, 6.5vw, 3.8rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    transition: transform 0.15s ease;
+  }
+
+  .unit-number.tick { transform: scale(1.07); }
+
+  .unit-label {
+    font-size: clamp(0.62rem, 1.4vw, 0.78rem);
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+  }
+
+  .sep {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: center;
+    margin-top: -16px;
+  }
+
+  .sep span {
+    display: block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  /* Adjust buttons */
+  .adjust-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 1.4rem;
+  }
+
+  .adj-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 100px;
+    padding: 7px 20px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    cursor: pointer;
+    transition: background 0.18s, transform 0.1s;
+    direction: rtl;
+  }
+
+  .adj-btn:hover { background: rgba(201,168,76,0.22); transform: scale(1.04); }
+  .adj-btn:active { transform: scale(0.97); }
+  .adj-btn svg { flex-shrink: 0; }
+
+  /* Date pill */
+  .date-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 100px;
+    padding: 8px 24px;
+    font-size: clamp(0.78rem, 1.8vw, 0.92rem);
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+
+  .date-bar svg { flex-shrink: 0; }
+
+  /* Emergency launch button */
+  .launch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.18), rgba(201,168,76,0.08));
+    border: 1.5px solid var(--gold);
+    border-radius: 100px;
+    padding: 10px 28px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    cursor: pointer;
+    transition: all 0.2s;
+    direction: rtl;
+    margin-bottom: 1.8rem;
+    letter-spacing: 0.02em;
+  }
+
+  .launch-btn:hover {
+    background: linear-gradient(135deg, rgba(201,168,76,0.3), rgba(201,168,76,0.15));
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(201,168,76,0.25);
+  }
+
+  .launch-btn:active { transform: scale(0.97); }
+
+  /* === DRAMATIC OVERLAY === */
+  #drama-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: var(--green-dark);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  #drama-overlay.active { display: flex; }
+
+  /* Animated ring */
+  .drama-ring {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .drama-ring svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .ring-bg {
+    fill: none;
+    stroke: rgba(201,168,76,0.15);
+    stroke-width: 6;
+  }
+
+  .ring-progress {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 754; /* 2π × 120 */
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.9s linear, stroke 0.3s;
+    filter: drop-shadow(0 0 8px rgba(201,168,76,0.6));
+  }
+
+  /* Inner glow circle */
+  .drama-ring::before {
+    content: '';
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    animation: pulseRing 1s ease-in-out infinite;
+  }
+
+  @keyframes pulseRing {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50%       { transform: scale(1.05); opacity: 1; }
+  }
+
+  /* Big number */
+  .drama-number {
+    font-size: 9rem;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 40px rgba(201,168,76,0.5);
+    animation: numPop 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  @keyframes numPop {
+    from { transform: scale(0.5); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+
+  .drama-label {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+  }
+
+  /* Particles */
+  .particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0;
+    animation: floatUp 1s ease-out forwards;
+  }
+
+  @keyframes floatUp {
+    0%   { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-120px) scale(0.3); }
+  }
+
+  /* Flash overlay */
+  #flash {
+    position: fixed;
+    inset: 0;
+    background: var(--gold);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 200;
+    transition: opacity 0.1s;
+  }
+
+  /* Finished */
+  .finished-msg {
+    display: none;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    font-weight: 700;
+    color: var(--gold);
+    margin: 1rem 0;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { opacity: 0.85; }
+    to   { opacity: 1; }
+  }
+
+  .footer-note {
+    font-size: 0.73rem;
+    color: rgba(255,255,255,0.28);
+    margin-top: 1.6rem;
+    font-weight: 300;
+  }
+
+  @media (max-width: 500px) {
+    body::after { inset: 10px; }
+    .logo-library img { height: 90px; }
+    .countdown { gap: 8px; }
+    .unit-box { width: 68px; height: 68px; border-radius: 6px; }
+    .sep span { width: 4px; height: 4px; }
+    .drama-number { font-size: 6rem; }
+    .drama-ring { width: 200px; height: 200px; }
+    .drama-ring::before { width: 168px; height: 168px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Flash effect -->
+<div id="flash"></div>
+
+<!-- Dramatic overlay -->
+<div id="drama-overlay">
+  <div class="particles" id="particles"></div>
+  <div class="drama-ring">
+    <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+      <circle class="ring-bg" cx="130" cy="130" r="120"/>
+      <circle class="ring-progress" id="ring-progress" cx="130" cy="130" r="120"/>
+    </svg>
+    <span class="drama-number" id="drama-number">5</span>
+  </div>
+  <p class="drama-label">جارٍ الانتقال للمكتبة…</p>
+</div>
+
+<div class="container">
+
+  <div class="logos-row">
+    <div class="logo-library">
+      <img src="https://i.ibb.co/4ZkDhdNq/cropped-output-onlinepngtools-2.png"
+           alt="شعار مكتبة كلية الحقوق جامعة القاهرة">
+    </div>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line right"></div>
+  </div>
+
+  <p class="headline">يسرّنا أن نُعلن عن</p>
+  <h1 class="title">افتتاح مكتبة كلية الحقوق</h1>
+  <p class="subtitle">جامعة القاهرة — نحو بيئة بحثية أكاديمية متكاملة</p>
+
+  <div class="date-bar">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+      <line x1="16" y1="2" x2="16" y2="6"/>
+      <line x1="8" y1="2" x2="8" y2="6"/>
+      <line x1="3" y1="10" x2="21" y2="10"/>
+    </svg>
+    الاثنين ٢٩ يونيو ٢٠٢٦ — الساعة الرابعة عصراً
+  </div>
+
+  <div class="countdown" id="countdown" role="timer" aria-live="polite" aria-label="عد تنازلي لموعد الافتتاح">
+    <div class="unit">
+      <div class="unit-box"><span class="unit-number" id="days">00</span></div>
+      <span class="unit-label">يوم</span>
+    </div>
+    <div class="sep"><span></span><span></span></div>
+    <div class="unit">
+      <div class="unit-box"><span class="unit-number" id="hours">00</span></div>
+      <span class="unit-label">ساعة</span>
+    </div>
+    <div class="sep"><span></span><span></span></div>
+    <div class="unit">
+      <div class="unit-box"><span class="unit-number" id="minutes">00</span></div>
+      <span class="unit-label">دقيقة</span>
+    </div>
+    <div class="sep"><span></span><span></span></div>
+    <div class="unit">
+      <div class="unit-box"><span class="unit-number" id="seconds">00</span></div>
+      <span class="unit-label">ثانية</span>
+    </div>
+  </div>
+
+  <div class="adjust-row">
+    <button class="adj-btn" onclick="adjust(-5)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      ٥ ثواني
+    </button>
+    <button class="adj-btn" onclick="adjust(5)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      ٥ ثواني
+    </button>
+  </div>
+
+  <!-- Emergency launch button -->
+  <button class="launch-btn" onclick="startDramaCountdown()">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="5 3 19 12 5 21 5 3"/>
+    </svg>
+    الانتقال الفوري للمكتبة
+  </button>
+
+  <p class="finished-msg" id="finished">🎉 مرحباً بكم في مكتبة كلية الحقوق! جارٍ التحويل…</p>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line right"></div>
+  </div>
+
+  <p class="footer-note">كلية الحقوق &nbsp;|&nbsp; جامعة القاهرة &nbsp;|&nbsp; مكتبة متكاملة للبحث العلمي</p>
+
+</div>
+
+<script>
+  /* ── Main countdown ── */
+  const TARGET = new Date();
+  TARGET.setFullYear(2026);
+  TARGET.setMonth(5);       // June
+  TARGET.setDate(29);       // Monday 29 June
+  TARGET.setHours(16, 0, 0, 0); // 4:00 PM
+
+  let offset   = 0;
+  let mainDone = false;
+
+  const REDIRECT = 'https://fll.law.cu.edu.eg/dashboard/queue_dashboard.php';
+
+  function adjust(sec) {
+    if (mainDone) return;
+    offset += sec * 1000;
+  }
+
+  const pad = n => String(n).padStart(2, '0');
+
+  const dEl   = document.getElementById('days');
+  const hEl   = document.getElementById('hours');
+  const mEl   = document.getElementById('minutes');
+  const sEl   = document.getElementById('seconds');
+  const finEl = document.getElementById('finished');
+  const cdEl  = document.getElementById('countdown');
+
+  let prevSec = -1;
+
+  function tick() {
+    const diff = (TARGET - Date.now()) + offset;
+
+    if (diff <= 0) {
+      dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+      finEl.style.display = 'block';
+      cdEl.style.opacity  = '0.4';
+      mainDone = true;
+      setTimeout(() => { window.location.href = REDIRECT; }, 3000);
+      return;
+    }
+
+    const totalSec = Math.floor(diff / 1000);
+    const days    = Math.floor(totalSec / 86400);
+    const hours   = Math.floor((totalSec % 86400) / 3600);
+    const minutes = Math.floor((totalSec % 3600) / 60);
+    const seconds = totalSec % 60;
+
+    dEl.textContent = pad(days);
+    hEl.textContent = pad(hours);
+    mEl.textContent = pad(minutes);
+    sEl.textContent = pad(seconds);
+
+    if (seconds !== prevSec) {
+      prevSec = seconds;
+      sEl.classList.remove('tick');
+      void sEl.offsetWidth;
+      sEl.classList.add('tick');
+      setTimeout(() => sEl.classList.remove('tick'), 150);
+    }
+
+    setTimeout(tick, 200);
+  }
+
+  tick();
+
+  /* ── Dramatic 5-second countdown ── */
+  const overlay      = document.getElementById('drama-overlay');
+  const dramaNum     = document.getElementById('drama-number');
+  const ringProgress = document.getElementById('ring-progress');
+  const flashEl      = document.getElementById('flash');
+  const particlesCnt = document.getElementById('particles');
+
+  const CIRCUMFERENCE = 2 * Math.PI * 120; // 754.0
+
+  let dramaRunning = false;
+
+  function startDramaCountdown() {
+    if (dramaRunning) return;
+    dramaRunning = true;
+
+    overlay.classList.add('active');
+    runDramaStep(5);
+  }
+
+  function runDramaStep(n) {
+    if (n === 0) {
+      // Flash → redirect
+      flashEl.style.opacity = '1';
+      spawnParticles(30);
+      setTimeout(() => {
+        flashEl.style.opacity = '0';
+        window.location.href = REDIRECT;
+      }, 400);
+      return;
+    }
+
+    // Update number with pop animation
+    dramaNum.style.animation = 'none';
+    void dramaNum.offsetWidth;
+    dramaNum.textContent = n;
+    dramaNum.style.animation = 'numPop 0.35s cubic-bezier(0.34,1.56,0.64,1)';
+
+    // Ring drains from full to empty over 1 second
+    // At start of step n, ring is full; then empties
+    ringProgress.style.transition = 'none';
+    ringProgress.style.strokeDashoffset = '0';
+    // Color shift: 5→gold, 3→orange, 1→red-ish
+    const colors = { 5:'#c9a84c', 4:'#c9a84c', 3:'#d4874a', 2:'#d4874a', 1:'#c94c4c' };
+    ringProgress.style.stroke = colors[n] || '#c9a84c';
+
+    void ringProgress.offsetWidth; // reflow
+
+    ringProgress.style.transition = `stroke-dashoffset 0.95s linear`;
+    ringProgress.style.strokeDashoffset = CIRCUMFERENCE;
+
+    // Spawn a few particles each second
+    spawnParticles(6);
+
+    setTimeout(() => runDramaStep(n - 1), 1000);
+  }
+
+  function spawnParticles(count) {
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left   = Math.random() * 100 + 'vw';
+      p.style.top    = (60 + Math.random() * 30) + 'vh';
+      p.style.width  = (3 + Math.random() * 5) + 'px';
+      p.style.height = p.style.width;
+      p.style.animationDelay    = (Math.random() * 0.4) + 's';
+      p.style.animationDuration = (0.6 + Math.random() * 0.6) + 's';
+      p.style.background = Math.random() > 0.5 ? '#c9a84c' : '#ffffff';
+      particlesCnt.appendChild(p);
+      setTimeout(() => p.remove(), 1500);
+    }
+  }
+</script>
+</body>
+</html>
