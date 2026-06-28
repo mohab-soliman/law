@@ -7,31 +7,39 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
+/* ─── DESIGN TOKENS ─────────────────────────────── */
 :root {
+  /* Surface scale — warm off-white to cool slate */
   --bg-base:     #f4f6fa;   /* page background */
   --bg-surface:  #ffffff;   /* card surface */
   --bg-muted:    #eaecf3;   /* pill / muted bg */
 
+  /* Brand — deep navy accent */
   --navy:        #1b2a4a;   /* headings */
   --navy-mid:    #2e4270;   /* sub-text */
   --navy-soft:   #6678a0;   /* muted text */
 
+  /* Gold accent — kept coherent */
   --gold:        #c09840;
   --gold-mid:    #d4ac52;
   --gold-light:  #e8c87a;
   --gold-bg:     rgba(192,152,64,.10);
   --gold-border: rgba(192,152,64,.28);
 
+  /* Dividers & borders */
   --border:      rgba(30,50,100,.10);
   --shadow-card: 0 2px 16px rgba(30,50,100,.08), 0 1px 4px rgba(30,50,100,.05);
   --shadow-btn:  0 4px 16px rgba(192,152,64,.30);
 
+  /* Countdown card */
   --card-bg:     #ffffff;
   --card-num:    #1b2a4a;
 
+  /* Timing */
   --ease-out:    cubic-bezier(.22,.68,0,1.2);
 }
 
+/* ─── RESET & BASE ───────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { font-size: 16px; }
@@ -47,6 +55,7 @@ body {
   position: relative;
 }
 
+/* Subtle radial on bg */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0;
@@ -56,6 +65,7 @@ body::before {
   pointer-events: none;
 }
 
+/* Outer frame line */
 body::after {
   content: '';
   position: fixed; inset: 18px; z-index: 0;
@@ -64,6 +74,7 @@ body::after {
   pointer-events: none;
 }
 
+/* ─── CONTAINER ──────────────────────────────────── */
 .container {
   position: relative; z-index: 1;
   width: 100%; max-width: 800px;
@@ -75,6 +86,7 @@ body::after {
   gap: 0;
 }
 
+/* ─── LOGO ───────────────────────────────────────── */
 .logo-wrap {
   margin-bottom: 1.5rem;
 }
@@ -87,6 +99,7 @@ body::after {
   drop-shadow: none;
 }
 
+/* ─── DIVIDER ────────────────────────────────────── */
 .divider {
   display: flex; align-items: center; gap: 10px;
   width: 100%; max-width: 420px;
@@ -107,6 +120,7 @@ body::after {
   flex-shrink: 0;
 }
 
+/* ─── COPY ───────────────────────────────────────── */
 .kicker {
   font-size: clamp(.85rem, 2vw, .95rem);
   font-weight: 400;
@@ -131,6 +145,7 @@ body::after {
   line-height: 1.6;
 }
 
+/* ─── DATE PILL ──────────────────────────────────── */
 .date-pill {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--gold-bg);
@@ -144,11 +159,12 @@ body::after {
   cursor: default;
 }
 
+/* ─── COUNTDOWN GRID ─────────────────────────────── */
 .countdown {
   display: flex; align-items: flex-start;
   gap: 10px;
   justify-content: center;
-  direction: ltr;         
+  direction: ltr;          /* days LEFT, seconds RIGHT */
   margin-bottom: 1.25rem;
   flex-wrap: wrap;
 }
@@ -167,6 +183,7 @@ body::after {
   overflow: hidden;
 }
 
+/* top gold accent line */
 .unit-card::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0;
@@ -174,6 +191,7 @@ body::after {
   background: linear-gradient(to right, transparent, var(--gold-mid), transparent);
 }
 
+/* center separator line */
 .unit-card::after {
   content: '';
   position: absolute;
@@ -202,6 +220,7 @@ body::after {
   letter-spacing: .07em;
 }
 
+/* separator dots */
 .sep {
   display: flex; flex-direction: column; gap: 8px;
   align-self: center; margin-top: -20px;
@@ -419,8 +438,8 @@ body::after {
   </div>
 
   <p class="kicker">يسرّنا أن نُعلن عن</p>
-  <h1 class="title"> افتتاح مكتبة كلية الحقوق جامعة القاهرة </h1>
-  <p class="subtitle"> نحو بيئة بحثية أكاديمية متكاملة</p>
+  <h1 class="title">افتتاح مكتبة كلية الحقوق</h1>
+  <p class="subtitle">جامعة القاهرة — نحو بيئة بحثية أكاديمية متكاملة</p>
 
   <div class="date-pill" aria-label="موعد الافتتاح">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
